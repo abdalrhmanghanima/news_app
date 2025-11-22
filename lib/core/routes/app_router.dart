@@ -1,0 +1,21 @@
+import 'package:flutter/material.dart';
+import 'package:news/core/routes/page_routes.dart';
+import 'package:news/modelus/home/view/home.dart';
+import 'package:news/modelus/search/search_view/Search.dart';
+import 'package:news/modelus/splash/pages/splash_view.dart';
+
+abstract class AppRouter {
+  static Route<dynamic> generateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case PageRoutesName.initial:
+        return MaterialPageRoute(builder: (_) => SplashView());
+      case PageRoutesName.home:
+        return MaterialPageRoute(builder: (_) => Home());
+      case PageRoutesName.search:
+        return MaterialPageRoute(builder: (_) => Search());  
+
+      default:
+        return MaterialPageRoute(builder: (_) => SplashView());
+    }
+  }
+}

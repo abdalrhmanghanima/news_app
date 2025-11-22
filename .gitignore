@@ -1,0 +1,21 @@
+# Flutter
+build/
+.dart_tool/
+.pub/
+.packages
+
+# Android
+android/.gradle/
+android/app/build/
+
+# iOS
+ios/Flutter/
+ios/Pods/
+
+# IDE
+.idea/
+*.iml
+
+# Assets (ignore big assets)
+assets/images/
+assets/icons/
