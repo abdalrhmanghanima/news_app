@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:news/presentation/home_screen/home_screen.dart';
-import 'package:news/presentation/news_screen/news_screen.dart';
-import 'package:news/presentation/news_screen/providers/theme_provider.dart';
-import 'package:news/presentation/resources/app_theme.dart';
+import 'package:news/presentation/news_screen/news_view.dart';
 import 'package:provider/provider.dart';
+
+import 'core/providers/theme_provider.dart';
+import 'core/resources/app_const/app_routes.dart';
+import 'core/resources/app_const/app_theme.dart';
 void main() {
   runApp(ChangeNotifierProvider(
       create: (context)=> ThemeProvider(),
@@ -23,10 +25,10 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.darkTheme,
       themeMode: themeProvider.getThemeMode,
       routes: {
-        NewsScreen.routeName: (context)=> NewsScreen(),
-        HomeScreen.routeName: (context)=> HomeScreen(),
+        AppRoutes.news: (context)=> NewsScreen(),
+        AppRoutes.home: (context)=> HomeScreen(),
       },
-      initialRoute: HomeScreen.routeName,
+      initialRoute: AppRoutes.news,
     );
   }
 }

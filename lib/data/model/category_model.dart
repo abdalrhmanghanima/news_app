@@ -1,3 +1,7 @@
+
+
+import '../../core/resources/app_const/app_assets.dart';
+
 class Category {
   final String? lightImage;
   final String? darkImage;
@@ -8,12 +12,12 @@ class Category {
      this.title,
   });
  static List <Category> categories=[
-   Category(title: '',lightImage: 'assets/images/general.png'),
-   Category(title: '',lightImage: 'assets/images/business.png'),
-   Category(title: '',lightImage: 'assets/images/sport.png'),
-   Category(title: '',lightImage: 'assets/images/technology.png'),
-   Category(title: '',lightImage: 'assets/images/entertainment.png'),
-   Category(title: '',lightImage: 'assets/images/health.png'),
-   Category(title: '',lightImage: 'assets/images/science.png'),
+   Category(title: '',lightImage: AppImages.generalDark),
+   Category(title: '',lightImage: AppImages.businessDark),
+   Category(title: '',lightImage: AppImages.sportDark),
+   Category(title: '',lightImage: AppImages.technologyDark),
+   Category(title: '',lightImage: AppImages.entertainmentDark),
+   Category(title: '',lightImage: AppImages.healthDark),
+   Category(title: '',lightImage: AppImages.scienceDark),
  ];
 }

@@ -5,7 +5,6 @@ import 'package:news/presentation/home_screen/widget/category_widget.dart';
 import '../../data/model/category_model.dart';
 
 class HomeScreen extends StatelessWidget {
-  static const String routeName='/homeScreen';
   const HomeScreen({super.key});
 
   @override

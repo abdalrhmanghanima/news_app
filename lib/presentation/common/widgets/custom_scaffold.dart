@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:news/presentation/news_screen/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
+
+import '../../../core/providers/theme_provider.dart';
+import '../../../core/resources/app_const/app_routes.dart';
 
 class CustomScaffold extends StatelessWidget {
   const CustomScaffold({
@@ -22,7 +24,7 @@ class CustomScaffold extends StatelessWidget {
           children: [
             DrawerHeader(child: Center(child: Text('News App'))),
             GestureDetector(
-              onTap: () {},
+              onTap: () {Navigator.pushNamed(context, AppRoutes.home); },
               child: ListTile(
                 title: Text('Go To Home'),
                 leading: Icon(Icons.home),
