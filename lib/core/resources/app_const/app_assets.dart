@@ -1,4 +1,5 @@
 class AppImages{
+  static const String splashScreen ="assets/images/splash.png";
   static const String generalDark ='assets/images/general_dark.png';
   static const String businessDark ='assets/images/business_dark.png';
   static const String sportDark='assets/images/sport_dark.png';

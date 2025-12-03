@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news/presentation/category_screen/category_view.dart';
 import 'package:news/presentation/home/home_screen.dart';
 import 'package:news/presentation/news_screen/news_view.dart';
+import 'package:news/presentation/splash/pages/splash_view.dart';
 import 'package:provider/provider.dart';
 
 import 'core/providers/theme_provider.dart';
@@ -27,8 +28,9 @@ class MyApp extends StatelessWidget {
       themeMode: themeProvider.getThemeMode,
       routes: {
         AppRoutes.home: (context)=> HomeScreen(),
+        AppRoutes.initial: (context)=> SplashView(),
       },
-      initialRoute: AppRoutes.home,
+      initialRoute: AppRoutes.initial,
     );
   }
 }
