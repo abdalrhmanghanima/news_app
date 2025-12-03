@@ -1,23 +1,60 @@
-
-
 import '../../core/resources/app_const/app_assets.dart';
 
-class Category {
-  final String? lightImage;
-  final String? darkImage;
-  final String? title;
-  Category({
-     this.lightImage,
-     this.darkImage,
-     this.title,
+class CategoryModel {
+  final String id;
+  final String title;
+  final String lightImage;
+  final String darkImage;
+
+  CategoryModel({
+    required this.id,
+    required this.title,
+    required this.lightImage,
+    required this.darkImage,
   });
- static List <Category> categories=[
-   Category(title: '',lightImage: AppImages.generalDark),
-   Category(title: '',lightImage: AppImages.businessDark),
-   Category(title: '',lightImage: AppImages.sportDark),
-   Category(title: '',lightImage: AppImages.technologyDark),
-   Category(title: '',lightImage: AppImages.entertainmentDark),
-   Category(title: '',lightImage: AppImages.healthDark),
-   Category(title: '',lightImage: AppImages.scienceDark),
- ];
+
+  static List<CategoryModel> categories = [
+    CategoryModel(
+      id: "general",
+      title: "General",
+      lightImage: AppImages.general,
+      darkImage: AppImages.generalDark,
+    ),
+    CategoryModel(
+      id: "business",
+      title: "Business",
+      lightImage: AppImages.business,
+      darkImage: AppImages.businessDark,
+    ),
+    CategoryModel(
+      id: "sports",
+      title: "Sports",
+      lightImage: AppImages.sport,
+      darkImage: AppImages.sportDark,
+    ),
+    CategoryModel(
+      id: "technology",
+      title: "Technology",
+      lightImage: AppImages.technology,
+      darkImage: AppImages.technologyDark,
+    ),
+    CategoryModel(
+      id: "entertainment",
+      title: "Entertainment",
+      lightImage: AppImages.entertainment,
+      darkImage: AppImages.entertainmentDark,
+    ),
+    CategoryModel(
+      id: "health",
+      title: "Health",
+      lightImage: AppImages.health,
+      darkImage: AppImages.healthDark,
+    ),
+    CategoryModel(
+      id: "science",
+      title: "Science",
+      lightImage: AppImages.science,
+      darkImage: AppImages.scienceDark,
+    ),
+  ];
 }

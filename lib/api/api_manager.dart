@@ -16,34 +16,39 @@ class ApiManager {
     _instance ??= ApiManager._();
     return _instance!;
   }
-  Future<SourcesResponse> getNewsSources(String category)async{
+  Future<SourcesResponse> getNewsSources(String category) async {
     var params = {
-      "category":category
+      "category": category,
+      "apiKey": _apiKey
     };
-    var headers ={
-      "Authorization":_apiKey
-    };
-   var uri=Uri.https(_baseUrl,_sourcesApi,params);
-   var respone= await http.get(uri,headers: headers);
-   print("sources Api ${respone.statusCode}");
-    print("sources Api ${respone.body}");
-    var json=jsonDecode(respone.body);
-    SourcesResponse sourcesResponse=SourcesResponse.fromJson(json);
-    return sourcesResponse;
+
+    var uri = Uri.https(_baseUrl, _sourcesApi, params);
+
+    var response = await http.get(uri);
+    print("URL: ${uri.toString()}");
+
+    print("sources Api ${response.statusCode}");
+    print("sources Api ${response.body}");
+
+    var json = jsonDecode(response.body);
+    return SourcesResponse.fromJson(json);
   }
-  Future<ArticlesResponse> getArticles(String sourceId)async{
+
+  Future<ArticlesResponse> getArticles(String sourceId) async {
     var params = {
-      "sources":sourceId
+      "sources": sourceId,
+      "apiKey": _apiKey
     };
-    var headers ={
-      "Authorization":_apiKey
-    };
-    var uri=Uri.https(_baseUrl,_articlesApi,params);
-    var respone= await http.get(uri,headers: headers);
-    print("sources Api ${respone.statusCode}");
-    print("sources Api ${respone.body}");
-    var json=jsonDecode(respone.body);
-    ArticlesResponse articlesResponse=ArticlesResponse.fromJson(json);
-    return articlesResponse;
+
+    var uri = Uri.https(_baseUrl, _articlesApi, params);
+
+    var response = await http.get(uri);
+
+    print("articles Api ${response.statusCode}");
+    print("articles Api ${response.body}");
+
+    var json = jsonDecode(response.body);
+    return ArticlesResponse.fromJson(json);
   }
+
 }

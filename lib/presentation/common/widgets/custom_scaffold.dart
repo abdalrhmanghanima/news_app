@@ -1,11 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/providers/theme_provider.dart';
-import '../../../core/resources/app_const/app_routes.dart';
-
 class CustomScaffold extends StatelessWidget {
-  const CustomScaffold({
+  const CustomScaffold(this.onHomeClick,{
     super.key,
     required this.title,
     this.actions,
@@ -14,34 +13,38 @@ class CustomScaffold extends StatelessWidget {
   final String title;
   final List<Widget>? actions;
   final Widget body;
+  final VoidCallback onHomeClick;
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
-      appBar: AppBar(title: Text(title), centerTitle: true, actions: actions),
+      appBar: AppBar(
+        title: Text(title),
+        centerTitle: true,
+        actions: actions,
+        scrolledUnderElevation: 0,
+      ),
       drawer: Drawer(
         child: Column(
           children: [
             DrawerHeader(child: Center(child: Text('News App'))),
-            GestureDetector(
-              onTap: () {Navigator.pushNamed(context, AppRoutes.home); },
-              child: ListTile(
-                title: Text('Go To Home'),
-                leading: Icon(Icons.home),
-              ),
+            ListTile(
+              onTap: () {
+                onHomeClick();
+                Navigator.pop(context);
+              },
+              title: Text('Go To Home'),
+              leading: Icon(CupertinoIcons.home),
             ),
             Divider(),
-            GestureDetector(
+            ListTile(
               onTap: () {
                 themeProvider.setThemeMode = themeProvider.isDarkMode
                     ? ThemeMode.light
                     : ThemeMode.dark;
               },
-              child: ListTile(
-                title: Text(themeProvider.isDarkMode
-                    ?'Dark':'Light'),
-                leading: Icon(Icons.light_mode),
-              ),
+              leading: Icon(themeProvider.isDarkMode ? Icons.dark_mode : Icons.light_mode),
+              title: Text(themeProvider.isDarkMode ? 'Dark' : 'Light'),
             ),
           ],
         ),

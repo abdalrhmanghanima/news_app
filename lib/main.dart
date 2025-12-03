@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news/presentation/home_screen/home_screen.dart';
+import 'package:news/presentation/category_screen/category_view.dart';
+import 'package:news/presentation/home/home_screen.dart';
 import 'package:news/presentation/news_screen/news_view.dart';
 import 'package:provider/provider.dart';
 
@@ -25,10 +26,9 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.darkTheme,
       themeMode: themeProvider.getThemeMode,
       routes: {
-        AppRoutes.news: (context)=> NewsScreen(),
         AppRoutes.home: (context)=> HomeScreen(),
       },
-      initialRoute: AppRoutes.news,
+      initialRoute: AppRoutes.home,
     );
   }
 }

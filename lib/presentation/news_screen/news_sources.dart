@@ -13,38 +13,54 @@ class NewsSourcesWidget extends StatefulWidget {
 }
 
 class _NewsSourcesWidgetState extends State<NewsSourcesWidget> {
-int selectedIndex=0;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    if (widget.tabs.isEmpty) {
+      return Center(
+        child: Text(
+          "No sources found",
+          style: TextStyle(fontSize: 18),
+        ),
+      );
+    }
+
     return DefaultTabController(
       length: widget.tabs.length,
       child: Column(
         children: [
           TabBar(
+            tabAlignment: TabAlignment.start,
             onTap: (index) {
               setState(() {
-                selectedIndex=index;              });
+                selectedIndex = index;
+              });
             },
             labelStyle: TextStyle(fontSize: 22),
             unselectedLabelStyle: TextStyle(fontSize: 18),
             isScrollable: true,
-            tabAlignment: TabAlignment.start,
-            overlayColor: WidgetStateProperty.all(Colors.transparent),
-            tabs: widget.tabs.map((source) => Tab(text: source.name)).toList(),
+            tabs: widget.tabs
+                .map((source) => Tab(text: source.name))
+                .toList(),
           ),
+
           Expanded(
-            child: FutureBuilder(future: ApiManager.getInstance().getArticles(widget.tabs[selectedIndex].id??""), builder: (context, snapshot) {
-              if(snapshot.connectionState==ConnectionState.waiting){
-                return Center(child: CircularProgressIndicator(),);
-              }
-              if(snapshot.hasError){
-                return Center(child: Text("Something Went Wrong"),);
-              }
-              var response = snapshot.data;
-              return ArticlesListWidget(response?.articles??[]);
-            },),
+            child: FutureBuilder(
+              future: ApiManager.getInstance()
+                  .getArticles(widget.tabs[selectedIndex].id ?? ""),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.hasError) {
+                  return Center(child: Text("Something Went Wrong"));
+                }
+                var response = snapshot.data;
+                return ArticlesListWidget(response?.articles ?? []);
+              },
             ),
+          ),
         ],
       ),
     );

@@ -6,4 +6,11 @@ class AppImages{
   static const String entertainmentDark='assets/images/entertainment_dark.png';
   static const String healthDark='assets/images/health_dark.png';
   static const String scienceDark='assets/images/science_dark.png';
+  static const String general ='assets/images/general.png';
+  static const String business ='assets/images/busniess.png';
+  static const String sport='assets/images/sport.png';
+  static const String technology='assets/images/technology.png';
+  static const String entertainment='assets/images/entertainment.png';
+  static const String health='assets/images/helth.png';
+  static const String science='assets/images/science.png';
 }
